@@ -1,0 +1,17 @@
+buildctl init
+
+buildctl sbt [args]
+buildctl react [args]
+buildctl docker [args]
+
+buildctl version
+buildctl version set --major? --minor? --bugfix? --label? --meta?
+buildctl version increment major, minor, bugfix, label
+
+buildctl git release start, finish
+buildctl git feature start, finish
+buildctl git hotfix start, finish
+buildctl git support start
+
+
+buildctl pullrequest create
