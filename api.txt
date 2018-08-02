@@ -1,8 +1,8 @@
 buildctl init
 
-buildctl sbt [args]
-buildctl react [args]
-buildctl docker [args]
+buildctl tool sbt [args]
+buildctl tool react [args]
+buildctl tool docker [args]
 
 buildctl version
 buildctl version set --major? --minor? --bugfix? --label? --meta?

@@ -31,20 +31,10 @@ func Cmd(name string, args ...string) func(bool) (string, error) {
 
 func main() {
 	var about About
-	about.Parse("../about.yml")
-
+	about.Parse("../about.missionplan.yml")
 	var version = ParseVersion(about.Version)
 
-	fmt.Println(version.GetVersion())
-
-	version.IncrementMajor()
-	fmt.Println(version.GetVersion())
-
-	version.RemoveLabel()
-	fmt.Println(version.GetVersion())
-
-	version.RemoveMeta()
-	fmt.Println(version.GetVersion())
+	fmt.Println(about.Test)
 
 	var rootCmd = &cobra.Command{
 		Use: "missionctl",
@@ -69,7 +59,7 @@ func main() {
 
 		var about About
 
-		fmt.Println(about.Parse("../about.yml").Version)
+		fmt.Println(about.Parse("../about.missionplan.yml").Version)
 		fmt.Println(version.GetVersion())
 
 		version.Minor = 20

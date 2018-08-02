@@ -1,1 +1,3 @@
-version: 1.2.3-rc.2+sha.daw
+version: 1.2.3-rc.2
+
+test: ${MISSION_TEST}

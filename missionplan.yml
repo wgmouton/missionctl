@@ -1,0 +1,3 @@
+local:
+  xxx: 'dawdaw'
+  yyy: "{{xxx}}"

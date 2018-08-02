@@ -1,9 +1,17 @@
 package main
 
-import "github.com/spf13/cobra"
+import (
+	"fmt"
+	"github.com/spf13/cobra"
+)
 
-var versionCmd = &cobra.Command{
-	Use: "version",
+func versionCmd(version Version) *cobra.Command {
+	return &cobra.Command{
+		Use: "version",
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println(version.GetVersion())
+		},
+	}
 }
 
 var setCmd = &cobra.Command{
@@ -41,7 +49,8 @@ func incrementCommand(version Version) {
 func VersionCommand(version Version) *cobra.Command {
 	incrementCommand(version)
 
-	versionCmd.AddCommand(setCmd)
-	versionCmd.AddCommand(incrementCmd)
-	return versionCmd
+	_versionCmd := versionCmd(version)
+	_versionCmd.AddCommand(setCmd)
+	_versionCmd.AddCommand(incrementCmd)
+	return _versionCmd
 }
