@@ -1,4 +1,5 @@
-buildctl init
+buildctl plans add
+buildctl plans remove
 
 buildctl tool sbt [args]
 buildctl tool react [args]

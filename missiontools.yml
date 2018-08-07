@@ -1,0 +1,14 @@
+variables:
+  BASE_DIR: '/bin/opt'
+
+
+tools:
+  SBT:
+    binary: 'sbt'
+    args:
+      - '-Dsbt.ivy.home=./ivy'
+
+  npm:
+    binary: 'npm'
+    args: []
+

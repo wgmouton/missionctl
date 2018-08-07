@@ -4,6 +4,7 @@ import (
 	// "fmt"
 	// "strings"
 	"fmt"
+	// "github.com/spf13/cobra"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
@@ -30,17 +31,25 @@ func Cmd(name string, args ...string) func(bool) (string, error) {
 }
 
 func main() {
-	var about About
-	about.Parse("../about.missionplan.yml")
-	var version = ParseVersion(about.Version)
 
-	fmt.Println(about.Test)
+	tools := &MissionTools{}
+	ParseYaml("../missiontools.yml", tools)
+
+	about := &About{}
+	ParseYaml("../about.yml", about)
+	fmt.Println(about)
+
+	plan := make(map[interface{}]interface{})
+	ParseYaml("../missionplan.yml", plan)
+	fmt.Println(plan)
+
+	version := ParseVersion(about.Version)
 
 	var rootCmd = &cobra.Command{
 		Use: "missionctl",
 	}
 
-	initCmd := initCommand(version)
+	initCmd := toolCommand(tools)
 	versionCmd := VersionCommand(version)
 	gitCmd := GitCommand(version)
 
