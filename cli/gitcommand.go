@@ -14,6 +14,9 @@ var startRelease = &cobra.Command{
 
 var releaseCmd = &cobra.Command{
 	Use: "release",
+	Run: func(cmd *cobra.Command, args []string) {
+		// Cmd()
+	},
 }
 
 func GitCommand(version Version) *cobra.Command {

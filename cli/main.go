@@ -32,16 +32,24 @@ func Cmd(name string, args ...string) func(bool) (string, error) {
 
 func main() {
 
+	missionctlDir := os.Getenv("MISSIONCTL_DIR")
+	if missionctlDir == "" {
+		missionctlDir = "~/.missionctl"
+	}
+
+	projectDir := os.Getenv("MC_PROJECT_DIR")
+	if projectDir == "" {
+		projectDir = "."
+	}
+
 	tools := &MissionTools{}
-	ParseYaml("../missiontools.yml", tools)
+	ParseYaml(missionctlDir+"/missiontools.yml", tools)
 
 	about := &About{}
-	ParseYaml("../about.yml", about)
-	fmt.Println(about)
+	ParseYaml(projectDir+"/about.yml", about)
 
-	plan := make(map[interface{}]interface{})
-	ParseYaml("../missionplan.yml", plan)
-	fmt.Println(plan)
+	// plan := make(map[interface{}]interface{})
+	// ParseYaml(projectDir+"/missionplan.yml", plan)
 
 	version := ParseVersion(about.Version)
 
